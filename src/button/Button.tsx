@@ -20,7 +20,8 @@ const Button = (props: IButtonProps) => {
       <style jsx>
         {`
           .btn {
-            @apply inline-block rounded-md text-center;
+            @apply inline-block rounded-full text-center;
+            border: 1px solid #ffffff;
           }
 
           .btn-base {
@@ -32,11 +33,13 @@ const Button = (props: IButtonProps) => {
           }
 
           .btn-primary {
-            @apply text-white bg-primary-500;
+            @apply text-white;
+            transition: background-color 0.3s ease;
           }
 
           .btn-primary:hover {
-            @apply bg-primary-600;
+            @apply bg-[#854CFF];
+            cursor: pointer;
           }
         `}
       </style>

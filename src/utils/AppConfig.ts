@@ -1,6 +1,7 @@
 export const AppConfig = {
-  site_name: 'Starter',
-  title: 'Nextjs Starter',
-  description: 'Starter code for your Nextjs Boilerplate with Tailwind CSS',
+  site_name: 'webora',
+  title: 'Webora Agency',
+  description:
+    'At Webora Agency, we specialize in creating custom web applications that elevate your business.',
   locale: 'en',
 };

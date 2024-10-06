@@ -3,3 +3,259 @@
 @tailwind components;
 
 @tailwind utilities;
+
+.css-blurry-gradient-right {
+  position: absolute;
+  bottom: 40%;
+  right: 10%;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  filter: blur(80px);
+  background: #854CFF;
+  opacity: .5;
+}
+
+.css-blurry-gradient-left {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  filter: blur(80px);
+  background: #854CFF;
+  opacity: .5;
+}
+
+
+/* Menu */
+.navbar .linktext{
+  text-align:center;
+  position:relative;
+  z-index:2;
+  color: #FFFFFF;
+  text-decoration:none;
+  transition:0.3s ease-in-out;
+  -webkit-transition:0.3s ease-in-out;
+  transition-delay:0s;
+  -webkit-transition-delay:0s;
+}
+.navbar .linktext:before, .navbar .linktext:after{
+  opacity:0;
+  position:absolute;
+  top:7px;
+  transform:translateY(36px);
+  -webkit-transform:translateY(36px);
+  left:0px;
+  width:100%;
+  transition:0.3s ease-in-out;
+  -webkit-transition:0.3s ease-in-out;
+  font-size:0.5em;
+}
+.navbar .linktext:before{
+  content:'';
+  height:1px;
+  background:#854CFF;
+  transition-delay:0s;
+  -webkit-transition-delay:0s;
+}
+.navbar .linktext:after{
+  content:attr(data-text);
+  color:#854CFF;
+  transition-delay:0s;
+  -webkit-transition-delay:0s;
+}
+.navbar .item{
+  display:inline-block;
+  position:relative;
+  background:transparent;
+  transition:0.3s ease-in-out;
+  -webkit-transition:0.3s ease-in-out;
+  z-index:2;
+  color:#854CFF;
+  text-decoration:none;
+  transition:0.3s ease-in-out;
+  -webkit-transition:0.3s ease-in-out;
+}
+.navbar .item:hover .linktext{
+  transform:scale(1.3);
+  -webkit-transform:scale(1.3);
+}
+.navbar .item:hover .linktext:before{
+  transition-delay:0s;
+  -webkit-transition-delay:0s;
+}
+.navbar .item:hover .linktext:after{
+  transition-delay:0.15s;
+  -webkit-transition-delay:0.15s;
+}
+.navbar .item:hover .linktext:before, .navbar .item:hover .linktext:after{
+  transform:translateY(16px);
+  -webkit-transform:translateY(16px);
+  opacity:1;
+}
+
+/* Circle Text */
+.circle {
+  position: relative;
+  width: 100px; /* Smaller circle */
+  height: 100px; /* Smaller circle */
+  border-radius: 50%;
+}
+
+.circle-text {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transform: rotate(0deg);
+  animation: rotate 12s linear infinite;
+}
+
+.circle-text span {
+  position: absolute;
+  width: 10px; /* Smaller size for the text container */
+  height: 10px; /* Smaller size for the text container */
+  text-align: center;
+  font-size: 8px; /* Reduced font size */
+  font-weight: 400;
+  color: #FFFFFF;
+  transform-origin: 50px 50px; /* Adjusted for smaller circle */
+}
+
+.mouse-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Centering the image */
+  cursor: pointer;
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1); 
+}
+.mouse-icon:hover {
+  transform: translate(-50%, -60%); /* Move the icon up slightly on hover */
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Blob button */
+
+.buttons {
+  margin-top: 50px;
+  text-align: center;
+  border-radius: 30px;
+}
+
+.blob-btn {
+  z-index: 1;
+  position: relative;
+  padding: 20px 46px;
+  margin-bottom: 30px;
+  text-align: center;
+  text-transform: uppercase;
+  color: #FFFFFF; /* Cyan color */
+  font-size: 16px;
+  font-weight: bold;
+  background-color: transparent;
+  outline: none;
+  border: none;
+  transition: color 0.5s;
+  cursor: pointer;
+  border-radius: 30px;
+}
+
+.blob-btn:before {
+  content: "";
+  z-index: 1;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  border: 2px solid #FFFFFF; /* Cyan border */
+  border-radius: 30px;
+}
+
+.blob-btn:after {
+  content: "";
+  z-index: -2;
+  position: absolute;
+  left: 3px; /* Adjusted for the border */
+  top: 3px; /* Adjusted for the border */
+  width: 100%;
+  height: 100%;
+  transition: all 0.3s 0.2s;
+  border-radius: 30px;
+}
+
+.blob-btn:hover {
+  color: #ffffff; /* Dark color on hover */
+}
+
+.blob-btn:hover:after {
+  transition: all 0.3s;
+  left: 0;
+  top: 0;
+  border-radius: 30px;
+}
+
+.blob-btn__inner {
+  z-index: -1;
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 30px;
+}
+
+.blob-btn__blobs {
+  position: relative;
+  display: block;
+  height: 100%;
+  filter: url('#goo');
+}
+
+.blob-btn__blob {
+  position: absolute;
+  top: 2px; /* Adjusted for the border */
+  width: calc(100% / 4); /* Number of blobs */
+  height: 100%;
+  background: #854CFF; /* Cyan */
+  border-radius: 100%;
+  transform: translate3d(0, 150%, 0) scale(1.7);
+  transition: transform 0.45s;
+
+}
+
+.blob-btn:hover .blob-btn__blob {
+  transform: translateZ(0) scale(1.7);
+}
+
+/* Positioning the blobs */
+.blob-btn__blob:nth-child(1) {
+  left: 0%;
+  transition-delay: 0s;
+}
+
+.blob-btn__blob:nth-child(2) {
+  left: 30%;
+  transition-delay: 0.08s;
+}
+
+.blob-btn__blob:nth-child(3) {
+  left: 60%;
+  transition-delay: 0.16s;
+}
+
+.blob-btn__blob:nth-child(4) {
+  left: 90%;
+  transition-delay: 0.24s;
+}

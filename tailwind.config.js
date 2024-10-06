@@ -12,6 +12,7 @@ module.exports = {
       '4xl': '2.25rem',
       '5xl': '3rem',
       '6xl': '4rem',
+      '7xl': '5rem',
     },
     extend: {
       colors: {
@@ -20,7 +21,7 @@ module.exports = {
           200: '#C0EAFC',
           300: '#9ADDFB',
           400: '#4FC3F7',
-          500: '#03A9F4',
+          500: '#854CFF',
           600: '#0398DC',
           700: '#026592',
           800: '#014C6E',
@@ -39,7 +40,10 @@ module.exports = {
         },
       },
       lineHeight: {
-        hero: '4.5rem',
+        hero: '6rem',
+      },
+      fontFamily: {
+        sans: ['Satoshi', 'sans-serif'],
       },
     },
   },
