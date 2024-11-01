@@ -28,6 +28,19 @@
   opacity: .5;
 }
 
+.css-blurry-gradient-center {
+  position: absolute;
+  top: 50%; /* Position from the top */
+  left: 50%; /* Position from the left */
+  width: 800px;
+  height: 200px;
+  border-radius: 50%;
+  filter: blur(60px);
+  background: #854CFF;
+  opacity: 0.2;
+  transform: translate(-50%, -50%); /* Centering it */
+}
+
 
 /* Menu */
 .navbar .linktext{
