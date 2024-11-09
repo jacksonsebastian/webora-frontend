@@ -1,10 +1,11 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
+/* eslint-disable tailwindcss/migration-from-tailwind-2 */
 import gsap from 'gsap';
 import Link from 'next/link';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import BlobButton from '@/button/BlobButton';
 import CircleText from '@/CircleText/CircleText';
+import BookMeeting from '@/components/bookMeeting';
 import { HeroOneButton } from '@/hero/HeroOneButton';
 
 import { Background } from '../background/Background';
@@ -13,6 +14,7 @@ import { NavbarTwoColumns } from '../navigation/NavbarTwoColumns';
 import { Logo } from './Logo';
 
 const Hero = () => {
+  const [open, setOpen] = useState(false); // Modal state
   const titleRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -45,6 +47,10 @@ const Hero = () => {
 
     tl.play(); // Start the animation
   }, []);
+
+  const handleOpen = () => {
+    setOpen(true); // Open the modal
+  };
 
   return (
     <Background
@@ -106,17 +112,49 @@ const Hero = () => {
               with <span className="text-primary-500">webora agency</span>
             </>
           }
-          description="help you to build website company that is modern, user friendly, good SEO, and Clean design"
+          description="help you to build a website company that is modern, user-friendly, good SEO, and Clean design"
           button={
-            <Link href="https://webora.agency">
+            <div onClick={handleOpen}>
               <BlobButton />
-            </Link>
+            </div>
           }
         />
       </Section>
-      <div className="flex justify-center ">
+
+      {open && <BookMeeting setOpen={setOpen} />}
+
+      <div className="flex justify-center">
         <CircleText />
       </div>
+
+      <style jsx>{`
+        /* Custom scrollbar styling */
+        .custom-scrollbar::-webkit-scrollbar {
+          width: 12px; /* Adjust width for a narrower look */
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-track {
+          border-radius: 4px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+          background-color: #854cff; /* Color of the scrollbar thumb */
+          border-radius: 4px;
+          border: 5px solid #f1f1f1;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+          background-color: #555; /* Darker color on hover */
+        }
+
+        .glassmorphism-container {
+          z-index: 999;
+          background: rgba(255, 255, 255, 3%);
+          backdrop-filter: blur(5px); /* Stronger blur for glass effect */
+          border-radius: 10px;
+          border: 1px solid rgba(255, 255, 255, 0.2); /* Light border */
+        }
+      `}</style>
     </Background>
   );
 };

@@ -53,6 +53,7 @@ const Pricing = () => {
   return (
     <div className="bg-black">
       <Section
+        yPadding="pb-8"
         title="Simple pricing to level up your brand."
         description="Clear Pricing for All Business Types, Skilled Developers, Rapid Delivery, Flexibility Without Commitment."
       >

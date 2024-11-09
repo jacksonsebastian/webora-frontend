@@ -56,7 +56,11 @@ const OurCapabilities = () => {
 
   return (
     <div className="bg-black">
-      <Section title="Our Capabilities" description="We can help you with...">
+      <Section
+        className="relative"
+        title="Our Capabilities"
+        description="We can help you with..."
+      >
         <div ref={containerRef} className="flex flex-wrap justify-center">
           {capabilities.map((item, index) => (
             <div key={index} className="m-3 rounded-md bg-primary-500 p-2">
@@ -175,7 +179,7 @@ const OurCapabilities = () => {
 
       <style jsx>{`
         .glassmorphism-container {
-          background: rgba(255, 255, 255, 0.1);
+          background: rgba(255, 255, 255, 3%);
           backdrop-filter: blur(4px);
           border-radius: 10px;
           border: 1px solid rgba(255, 255, 255, 0.2);
