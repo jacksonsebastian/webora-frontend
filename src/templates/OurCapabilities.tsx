@@ -1,88 +1,44 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { gsap } from 'gsap';
 import Image from 'next/image';
-import { useEffect, useRef } from 'react';
 
 import { Button } from '@/button/Button';
+import CardSlider from '@/components/cardSlider/cardSlider';
 import { Section } from '@/layout/Section';
 
 const OurCapabilities = () => {
-  const capabilities = [
-    'Custom Web Development',
-    'Single-Page website',
-    'Figma to HTML',
-    'PSD to HTML',
-    'SEO Optimization',
-    'Web Application Development',
-    'Full-Stack Development',
-    'E-commerce Website Development',
-    'UI/UX Design',
-    'Speed Optimization',
-    'Custom Admin Dashboard',
-    'Third-Party API Integration',
-    'API Integration Services',
-    'Progressive Web Apps',
-    'Mobile-Responsive Design',
-    'CMS Website Development',
-  ];
-
-  const containerRef = useRef<HTMLDivElement | null>(null);
-
-  useEffect(() => {
-    const items = containerRef.current?.children;
-
-    if (items) {
-      // GSAP stagger animation with random movement and scaling
-      gsap.fromTo(
-        items,
-        {
-          opacity: 0,
-          y: () => gsap.utils.random(-100, 100), // random starting Y position
-          scale: 0.5,
-          rotate: () => gsap.utils.random(-20, 20), // random rotation
-        },
-        {
-          opacity: 1,
-          y: 0, // bring it to its original position
-          scale: 1,
-          rotate: 0,
-          duration: 1.5,
-          stagger: 0.2, // stagger the animation
-          ease: 'power3.out',
-        },
-      );
-    }
-  }, []);
-
   return (
     <div className="bg-black">
       <Section
+        titleClassName="mb-6"
         className="relative"
         title="Our Capabilities"
         description="We can help you with..."
       >
-        <div ref={containerRef} className="flex flex-wrap justify-center">
-          {capabilities.map((item, index) => (
-            <div key={index} className="m-3 rounded-md bg-primary-500 p-2">
-              <h2 className="text-primary-100">{item}</h2>
-            </div>
-          ))}
+        <div className="flex flex-wrap justify-center">
+          <CardSlider />
         </div>
-
-        <h2 className="mx-20 pt-10 text-primary-500">BENEFITS</h2>
-        <div className="grid grid-cols-1 gap-4 py-4 md:grid-cols-2 lg:grid-cols-2">
-          <h3 className="mx-20 text-4xl font-bold text-primary-100">
+        <h2 className="mx-4 pt-8 text-center text-2xl font-bold text-primary-500 sm:mx-6 sm:text-left sm:text-xl md:mx-10 md:pt-10 md:text-xl lg:mx-20 lg:text-xl">
+          BENEFITS
+        </h2>
+        <div className="grid grid-cols-1 gap-8 py-6 md:grid-cols-2 lg:gap-12">
+          {/* Heading Section */}
+          <h3 className="mx-4 text-xl font-bold text-primary-100 sm:text-2xl md:mx-10 md:text-3xl lg:mx-20 lg:text-4xl">
             Your Vision, Realized: Expert Web Development to Elevate Your Brand
             ✨
           </h3>
-          <div className="mx-20">
-            <h3 className="py-2 pb-4 text-lg font-light text-primary-100">
+
+          {/* Content & Button Section */}
+          <div className="mx-4 md:mx-10 lg:mx-20">
+            <h3 className="py-2 pb-6 text-justify text-base font-light text-primary-100 sm:text-left sm:text-lg md:text-lg lg:pb-8 lg:text-xl">
               Why juggle hiring, manage expenses, or stress over the details?
               Our web development packages connect you with expert solutions to
               elevate your brand effortlessly. Choose the package that fits your
               goals, and let us handle the rest.
             </h3>
-            <Button>Get Started</Button>
+
+            <div className="flex justify-center sm:justify-start">
+              <Button className="px-4 py-2">Get Started</Button>
+            </div>
           </div>
         </div>
 

@@ -8,38 +8,89 @@
   position: absolute;
   bottom: 40%;
   right: 10%;
-  width: 300px;
-  height: 300px;
+  width: 20vw; /* Adjusts size based on viewport width */
+  height: 20vw;
   border-radius: 50%;
-  filter: blur(80px);
-  background: #854CFF;
-  opacity: .3
+  filter: blur(10vw); /* Blur size also responsive */
+  background: #854cff;
+  opacity: 0.3;
 }
 
 .css-blurry-gradient-left {
   position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 300px;
-  height: 300px;
+  bottom: 5%;
+  left: 5%;
+  width: 20vw;
+  height: 20vw;
   border-radius: 50%;
-  filter: blur(80px);
-  background: #854CFF;
+  filter: blur(10vw);
+  background: #854cff;
   opacity: 0.3;
 }
 
+/* Responsive adjustments for smaller screens */
+@media (max-width: 1024px) {
+  .css-blurry-gradient-right,
+  .css-blurry-gradient-left {
+    width: 30vw;
+    height: 30vw;
+    filter: blur(15vw);
+  }
+}
+
+@media (max-width: 768px) {
+  .css-blurry-gradient-right,
+  .css-blurry-gradient-left {
+    width: 35vw;
+    height: 35vw;
+    filter: blur(20vw);
+  }
+}
+
+@media (max-width: 480px) {
+  .css-blurry-gradient-right,
+  .css-blurry-gradient-left {
+    width: 40vw;
+    height: 40vw;
+    filter: blur(25vw);
+  }
+}
+
+
 .css-blurry-gradient-center {
   position: absolute;
-  top: 50%; /* Position from the top */
-  left: 50%; /* Position from the left */
+  top: 50%;
+  left: 50%;
   width: 800px;
   height: 200px;
   border-radius: 50%;
   filter: blur(60px);
   background: #854CFF;
   opacity: 0.2;
-  transform: translate(-50%, -50%); /* Centering it */
+  transform: translate(-50%, -50%);
 }
+
+@media (max-width: 1024px) {
+  .css-blurry-gradient-center {
+    width: 600px; /* Smaller width for tablets and smaller screens */
+    height: 150px;
+  }
+}
+
+@media (max-width: 768px) {
+  .css-blurry-gradient-center {
+    width: 400px; /* Even smaller for mobile screens */
+    height: 100px;
+  }
+}
+
+@media (max-width: 480px) {
+  .css-blurry-gradient-center {
+    width: 300px; /* Adjusting for very small screens */
+    height: 80px;
+  }
+}
+
 
 
 /* Menu */
@@ -159,6 +210,8 @@
 
 /* Blob button */
 
+/* Blob button */
+
 .buttons {
   margin-top: 50px;
   text-align: center;
@@ -245,7 +298,6 @@
   border-radius: 100%;
   transform: translate3d(0, 150%, 0) scale(1.7);
   transition: transform 0.45s;
-
 }
 
 .blob-btn:hover .blob-btn__blob {
@@ -271,4 +323,65 @@
 .blob-btn__blob:nth-child(4) {
   left: 90%;
   transition-delay: 0.24s;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .blob-btn {
+    padding: 16px 32px;
+    font-size: 14px;
+  }
+
+  .blob-btn__blob {
+    width: calc(100% / 3); /* 3 blobs on medium screens */
+  }
+
+  .blob-btn__blob:nth-child(3) {
+    left: 66%;
+  }
+
+  .blob-btn__blob:nth-child(4) {
+    display: none; /* Hide the 4th blob on medium screens */
+  }
+}
+
+@media (max-width: 768px) {
+  .blob-btn {
+    padding: 18px 36px;  /* Slightly increased padding */
+    font-size: 16px;      /* Slightly larger font size */
+  }
+
+  .blob-btn__blob {
+    width: 50%; /* 2 blobs on small screens */
+  }
+
+  .blob-btn__blob:nth-child(2) {
+    left: 50%;
+  }
+
+  .blob-btn__blob:nth-child(3),
+  .blob-btn__blob:nth-child(4) {
+    display: none; /* Hide blobs on small screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .blob-btn {
+    padding: 16px 32px;  /* Slightly increased padding */
+    font-size: 14px;      /* Slightly larger font size */
+  }
+
+  .blob-btn__blob {
+    width: 100%; /* 1 blob on extra small screens */
+  }
+
+  .blob-btn__blob:nth-child(1) {
+    left: 0%;
+  }
+
+  .blob-btn__blob:nth-child(2),
+  .blob-btn__blob:nth-child(3),
+  .blob-btn__blob:nth-child(4) {
+    display: none; /* Hide all but the first blob */
+  }
 }

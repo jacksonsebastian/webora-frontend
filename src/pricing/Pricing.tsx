@@ -13,9 +13,9 @@ const Pricing = () => {
       features: [
         { name: 'Professional Home Page', included: true },
         { name: 'Responsive Design', included: true },
-        { name: 'Booking or Scheduling Integration', included: false },
         { name: 'SEO Optimization', included: false },
         { name: 'Performance Optimization', included: false },
+        { name: 'Booking API Integration', included: false },
         { name: 'Technical Support', included: false },
       ],
     },
@@ -29,7 +29,7 @@ const Pricing = () => {
         { name: 'Responsive Design', included: true },
         { name: 'SEO Optimization', included: true },
         { name: 'Performance Optimization', included: true },
-        { name: 'Booking or Scheduling Integration', included: false },
+        { name: 'Booking API Integration', included: false },
         { name: 'Technical Support', included: false },
       ],
     },
@@ -44,7 +44,7 @@ const Pricing = () => {
         { name: 'Responsive Design', included: true },
         { name: 'SEO Optimization', included: true },
         { name: 'Performance Optimization', included: true },
-        { name: 'Booking or Scheduling Integration', included: true },
+        { name: 'Booking API Integration', included: true },
         { name: 'Technical Support', included: true },
       ],
     },
@@ -57,7 +57,7 @@ const Pricing = () => {
         title="Simple pricing to level up your brand."
         description="Clear Pricing for All Business Types, Skilled Developers, Rapid Delivery, Flexibility Without Commitment."
       >
-        <div className="relative gap-x-16 gap-y-4 lg:grid lg:grid-cols-3">
+        <div className="relative grid gap-8 lg:grid lg:grid-cols-3">
           <div className="css-blurry-gradient-center"></div>
           {planData.map((plan, index) => (
             <div

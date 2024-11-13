@@ -14,8 +14,8 @@ const ContactUs = () => {
       >
         <div className="css-blurry-gradient-right !right-2"></div>
         <div className="css-blurry-gradient-left !left-2"></div>
-        <div className="glassmorphism-container grid items-center p-8 lg:grid-cols-2">
-          <div className="relative h-[600px] w-3/4 overflow-hidden rounded-md">
+        <div className="glassmorphism-container grid items-center p-6 lg:grid-cols-2 lg:p-8">
+          <div className="relative mb-4 h-64 overflow-hidden rounded-md sm:h-80 md:h-96 lg:mb-0 lg:h-[500px] lg:w-3/4 xl:h-[600px]">
             <Image
               className="rounded-md"
               src="/assets/images/faq/faq.png"

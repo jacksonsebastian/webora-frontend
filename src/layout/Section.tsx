@@ -6,6 +6,7 @@ type ISectionProps = {
   yPadding?: string;
   children: ReactNode;
   className?: string;
+  titleClassName?: string;
 };
 
 const Section = (props: ISectionProps) => (
@@ -15,7 +16,9 @@ const Section = (props: ISectionProps) => (
     }`}
   >
     {(props.title || props.description) && (
-      <div className="mb-12 text-center">
+      <div
+        className={`${props?.titleClassName ? props?.titleClassName : 'mb-12'} text-center`}
+      >
         {props.title && (
           <h2 className="text-4xl font-bold text-primary-100">{props.title}</h2>
         )}

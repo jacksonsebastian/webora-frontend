@@ -179,7 +179,7 @@ const BookMeeting = ({ setOpen }: any) => {
   return (
     <>
       <div className="glassmorphism-container modal fixed inset-0 z-50 flex items-center justify-center ">
-        <div className="modal-content borde relative w-1/2 rounded-lg border-primary-400 bg-white p-6">
+        <div className="modal-content relative w-full rounded-lg bg-white p-6 xl:w-1/2">
           <button
             className="absolute right-3 top-2 cursor-pointer border-none bg-transparent text-xl text-gray-700"
             onClick={() => setOpen(false)}
@@ -433,6 +433,34 @@ const BookMeeting = ({ setOpen }: any) => {
           )}
         </div>
       </div>
+      <style jsx>{`
+        /* Custom scrollbar styling */
+        .custom-scrollbar::-webkit-scrollbar {
+          width: 12px; /* Adjust width for a narrower look */
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-track {
+          border-radius: 4px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+          background-color: #854cff; /* Color of the scrollbar thumb */
+          border-radius: 4px;
+          border: 5px solid #f1f1f1;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+          background-color: #555; /* Darker color on hover */
+        }
+
+        .glassmorphism-container {
+          z-index: 9;
+          background: rgba(255, 255, 255, 3%);
+          backdrop-filter: blur(4px); /* Stronger blur for glass effect */
+          border-radius: 10px;
+          border: 1px solid rgba(255, 255, 255, 0.2); /* Light border */
+        }
+      `}</style>
     </>
   );
 };

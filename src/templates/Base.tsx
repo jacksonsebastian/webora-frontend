@@ -1,10 +1,10 @@
 import ContactUs from '@/contactUs/ContactUs';
 import { CTABanner } from '@/cta/CTABanner';
 import Faq from '@/faq/Faq';
+import { Meta } from '@/layout/Meta';
+import Pricing from '@/pricing/Pricing';
+import { AppConfig } from '@/utils/AppConfig';
 
-import { Meta } from '../layout/Meta';
-import Pricing from '../pricing/Pricing';
-import { AppConfig } from '../utils/AppConfig';
 import { Footer } from './Footer';
 import { Hero } from './Hero';
 import { OurCapabilities } from './OurCapabilities';
@@ -18,9 +18,6 @@ const Base = () => (
     <Faq />
     <ContactUs />
     <CTABanner />
-    {/* <VerticalFeatures />
-    <Banner /> */}
-
     <Footer />
   </div>
 );

@@ -1,7 +1,6 @@
 /* eslint-disable tailwindcss/migration-from-tailwind-2 */
-import gsap from 'gsap';
 import Link from 'next/link';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import BlobButton from '@/button/BlobButton';
 import CircleText from '@/CircleText/CircleText';
@@ -15,42 +14,38 @@ import { Logo } from './Logo';
 
 const Hero = () => {
   const [open, setOpen] = useState(false); // Modal state
-  const titleRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const tl = gsap.timeline({ paused: true });
-
-    // Letter animation (typewriter effect)
-    tl.fromTo(
-      titleRef.current,
-      8,
-      { width: '0' },
-      {
-        width: '20.18em', // Matches CSS width for typewriter effect
-        ease: 'SteppedEase.config(37)',
-      },
-      0,
-    );
-
-    // Text cursor animation
-    tl.fromTo(
-      titleRef.current,
-      0.5,
-      { borderRightColor: 'rgba(255,255,255,0.75)' },
-      {
-        borderRightColor: 'rgba(255,255,255,0)',
-        repeat: -1,
-        ease: 'SteppedEase.config(37)',
-      },
-      0,
-    );
-
-    tl.play(); // Start the animation
-  }, []);
 
   const handleOpen = () => {
     setOpen(true); // Open the modal
   };
+
+  useEffect(() => {
+    const preventScroll = (e: { preventDefault: () => void }) => {
+      e.preventDefault(); // Prevent scroll events
+    };
+
+    if (open) {
+      // Prevent scrolling by adding an event listener
+      document.body.style.overflow = 'scroll'; // Keep scrollbar visible
+      document.body.addEventListener('wheel', preventScroll, {
+        passive: false,
+      }); // Prevent scroll events
+      document.body.addEventListener('touchmove', preventScroll, {
+        passive: false,
+      }); // Prevent touch scroll events
+    } else {
+      document.body.style.overflow = 'auto'; // Enable scrolling when modal is closed
+      // Clean up the event listeners when the modal is closed
+      document.body.removeEventListener('wheel', preventScroll);
+      document.body.removeEventListener('touchmove', preventScroll);
+    }
+
+    // Cleanup function to remove event listeners when component unmounts
+    return () => {
+      document.body.removeEventListener('wheel', preventScroll);
+      document.body.removeEventListener('touchmove', preventScroll);
+    };
+  }, [open]);
 
   return (
     <Background
@@ -123,38 +118,9 @@ const Hero = () => {
 
       {open && <BookMeeting setOpen={setOpen} />}
 
-      <div className="flex justify-center">
+      <div className="absolute bottom-20 left-1/2 flex -translate-x-1/2 transform justify-center md:relative md:bottom-0">
         <CircleText />
       </div>
-
-      <style jsx>{`
-        /* Custom scrollbar styling */
-        .custom-scrollbar::-webkit-scrollbar {
-          width: 12px; /* Adjust width for a narrower look */
-        }
-
-        .custom-scrollbar::-webkit-scrollbar-track {
-          border-radius: 4px;
-        }
-
-        .custom-scrollbar::-webkit-scrollbar-thumb {
-          background-color: #854cff; /* Color of the scrollbar thumb */
-          border-radius: 4px;
-          border: 5px solid #f1f1f1;
-        }
-
-        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-          background-color: #555; /* Darker color on hover */
-        }
-
-        .glassmorphism-container {
-          z-index: 999;
-          background: rgba(255, 255, 255, 3%);
-          backdrop-filter: blur(5px); /* Stronger blur for glass effect */
-          border-radius: 10px;
-          border: 1px solid rgba(255, 255, 255, 0.2); /* Light border */
-        }
-      `}</style>
     </Background>
   );
 };

@@ -25,7 +25,8 @@
     "nodemailer": "^6.9.16",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "styled-jsx-plugin-postcss": "^4.0.1"
+    "styled-jsx-plugin-postcss": "^4.0.1",
+    "swiper": "^11.1.14"
   },
   "devDependencies": {
     "@netlify/plugin-nextjs": "^5.8.1",
